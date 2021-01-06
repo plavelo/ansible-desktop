@@ -1,4 +1,12 @@
 ---
+- name: Remove apps
+  become: true
+  apt:
+    name:
+      - firefox*
+    state: absent
+    purge: true
+
 - name: Install chrome
   include: chrome.yml
 
