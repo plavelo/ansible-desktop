@@ -1,0 +1,20 @@
+---
+- name: Create temporary directory
+  tempfile:
+    state: directory
+    suffix: rust
+  register: rust_tmp
+
+- name: Download script
+  get_url:
+    dest: "{{ rust_tmp.path }}/init.sh"
+    url: https://sh.rustup.rs/
+
+- name: Run script
+  command: "sh {{ rust_tmp.path }}/init.sh -y"
+
+- name: Cleanup temporary directory
+  file:
+    path: "{{ rust_tmp }}"
+    state: absent
+

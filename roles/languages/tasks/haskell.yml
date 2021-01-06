@@ -1,0 +1,21 @@
+---
+- name: Create temporary directory
+  tempfile:
+    state: directory
+    suffix: haskell 
+  register: haskell_tmp
+
+- name: Download script
+  get_url:
+    dest: "{{ haskell_tmp.path }}/init.sh"
+    url: https://get.haskellstack.org/
+
+- name: Run script
+  become: true
+  command: "sh {{ haskell_tmp.path }}/init.sh"
+
+- name: Cleanup temporary directory
+  file:
+    path: "{{ haskell_tmp }}"
+    state: absent
+

@@ -1,0 +1,13 @@
+---
+- name: Check rust
+  stat:
+    path: "{{ home }}/.cargo/bin/rustup"
+  register: rust
+
+- name: Install rust
+  include: rust.yml
+  when: not rust.stat.exists
+
+- name: Install haskell
+  include: haskell.yml
+

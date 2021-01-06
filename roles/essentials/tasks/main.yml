@@ -1,0 +1,10 @@
+---
+- name: Install common tools
+  become: true
+  apt:
+    name:
+      - vim
+      - tmux
+      - git
+      - curl
+    state: present
