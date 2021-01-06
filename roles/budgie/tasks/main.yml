@@ -11,3 +11,6 @@
   file:
     path: "{{ home }}/.config/plank"
     state: absent
+
+- name: Set background image
+  shell: "gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/budgie/mountain-lake_by_william_beckwith.jpg'"
