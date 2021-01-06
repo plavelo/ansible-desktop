@@ -1,0 +1,13 @@
+---
+- name: Remove apps
+  become: true
+  apt:
+    name:
+      - plank
+    state: absent
+    purge: true
+
+- name: Cleanup config directory
+  file:
+    path: "{{ home }}/.config/plank"
+    state: absent
