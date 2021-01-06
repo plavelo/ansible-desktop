@@ -6,4 +6,5 @@
   roles:
     - budgie
     - essentials
+    - applications
     - languages
