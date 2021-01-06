@@ -8,6 +8,13 @@
   include: rust.yml
   when: not rust.stat.exists
 
+- name: Check haskell
+  command: which stack
+  register: haskell
+  changed_when: false
+  ignore_errors: true
+
 - name: Install haskell
   include: haskell.yml
+  when: haskell.failed
 
