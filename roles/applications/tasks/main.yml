@@ -7,11 +7,18 @@
     state: absent
     purge: true
 
+- name: Install apps (classic)
+  become: true
+  snap:
+    name:
+      - shotcut
+    classic: yes
+
 - name: Install apps
   become: true
   snap:
-    name: shotcut
-    classic: yes
+    name:
+      - qalculate
 
 - name: Install chrome
   include: chrome.yml
