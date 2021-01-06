@@ -1,2 +1,5 @@
 ---
 home: "{{ ansible_env.HOME }}"
+name: "plavelo"
+email: "plastic.velocity@gmail.com"
+

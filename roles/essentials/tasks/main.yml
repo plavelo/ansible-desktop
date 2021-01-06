@@ -8,3 +8,21 @@
       - git
       - curl
     state: present
+
+- name: Configure git default editor
+  git_config:
+    name: core.editor
+    scope: global
+    value: vim
+
+- name: Configure git user email
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ email }}"
+
+- name: Configure git user name
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{ name }}"
