@@ -1,0 +1,22 @@
+---
+- name: Create temporary directory
+  tempfile:
+    state: directory
+    suffix: discord
+  register: discord_tmp
+
+- name: Download deb
+  get_url:
+    dest: "{{ discord_tmp.path }}/discord.deb"
+    url: https://discord.com/api/download?platform=linux&format=deb
+
+- name: Install deb
+  become: true
+  apt:
+    deb: "{{ discord_tmp.path }}/discord.deb"
+
+- name: Cleanup temporary directory
+  file:
+    path: "{{ discord_tmp }}"
+    state: absent
+

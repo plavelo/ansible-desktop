@@ -8,10 +8,9 @@
 - name: Add repository
   become: true
   apt_repository:
-    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-    state: present
+    repo: deb [arch=amd64] https://dl-ssl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
-    update_cache: yes
+    state: present
 
 - name: Install chrome
   become: true

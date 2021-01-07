@@ -1,0 +1,21 @@
+---
+- name: Add key
+  become: true
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
+    state: present
+    filename: vscode
+    state: present
+
+- name: Install vscode
+  become: true
+  apt:
+    name: code
+    state: present
+

@@ -1,0 +1,22 @@
+---
+- name: Create temporary directory
+  tempfile:
+    state: directory
+    suffix: slack
+  register: slack_tmp
+
+- name: Download deb
+  get_url:
+    dest: "{{ slack_tmp.path }}/slack.deb"
+    url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.11.3-amd64.deb
+
+- name: Install deb
+  become: true
+  apt:
+    deb: "{{ slack_tmp.path }}/slack.deb"
+
+- name: Cleanup temporary directory
+  file:
+    path: "{{ slack_tmp }}"
+    state: absent
+

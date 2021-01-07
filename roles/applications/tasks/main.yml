@@ -1,4 +1,20 @@
 ---
+- name: Install apps
+  become: true
+  apt:
+    name:
+      - handbrake
+      - gparted
+      - nomacs
+      - qbittorrent
+      - rawtherapee
+      - soundconverter
+      - baobab
+      - evince
+      - asunder
+      - ardour
+    state: present
+
 - name: Remove apps
   become: true
   apt:
@@ -7,19 +23,45 @@
     state: absent
     purge: true
 
-- name: Install apps (classic)
+- name: Install apps (snap, classic)
   become: true
   snap:
     name:
       - shotcut
     classic: yes
 
-- name: Install apps
+- name: Install apps (snap)
   become: true
   snap:
     name:
+      - gimp
       - qalculate
+      - spotify
+      - vlc
 
 - name: Install chrome
   include: chrome.yml
+
+- name: Install vscode
+  include: vscode.yml
+
+- name: Check slack
+  command: which slack
+  register: slack
+  changed_when: false
+  ignore_errors: true
+
+- name: Install slack
+  include: slack.yml
+  when: slack.failed
+
+- name: Check discord
+  command: which discord
+  register: discord
+  changed_when: false
+  ignore_errors: true
+
+- name: Install discord
+  include: discord.yml
+  when: discord.failed
 
