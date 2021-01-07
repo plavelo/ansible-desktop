@@ -1,4 +1,13 @@
 ---
+- name: Remove tools
+  become: true
+  apt:
+    name:
+      - ibus
+    state: absent
+    purge: true
+    autoremove: true
+
 - name: Install common tools
   become: true
   apt:
@@ -8,7 +17,13 @@
       - curl
       - exfat-utils
       - fcitx-mozc
+      - language-pack-gnome-ja
+      - fonts-noto-cjk-extra
     state: present
+
+- name: Configure IME
+  command: im-config -n fcitx
+  changed_when: false
 
 - name: Install git
   include: git.yml
