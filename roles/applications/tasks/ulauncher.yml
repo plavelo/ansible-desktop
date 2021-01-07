@@ -1,0 +1,12 @@
+---
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: ppa:agornostal/ulauncher 
+
+- name: Install ulauncher
+  become: true
+  apt:
+    name: ulauncher
+    state: present
+

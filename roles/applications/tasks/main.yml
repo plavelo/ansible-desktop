@@ -66,3 +66,6 @@
   include: discord.yml
   when: discord.failed
 
+- name: Install ulauncher
+  include: ulauncher.yml
+
