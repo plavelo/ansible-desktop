@@ -12,7 +12,31 @@
     path: "{{ home }}/.config/plank"
     state: absent
 
-- name: Set background image
+- name: Set key bindings
   shell: "gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/budgie/mountain-lake_by_william_beckwith.jpg'"
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Ctrl>Right']\""
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left \"['<Ctrl>Left']\""
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right \"['<Ctrl><Alt>Right']\""
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left \"['<Ctrl><Alt>Left']\""
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set com.solus-project.budgie-wm toggle-raven \"['']\""
+  changed_when: false
+
+- name: Set key bindings
+  shell: "gsettings set com.solus-project.budgie-wm clear-notifications \"['']\""
   changed_when: false
 
