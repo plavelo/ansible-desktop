@@ -40,3 +40,7 @@
   shell: "gsettings set com.solus-project.budgie-wm clear-notifications \"['']\""
   changed_when: false
 
+- name: Load budgie dconf
+  shell: "dconf load /com/solus-project/ < {{ playbook_dir }}/files/budgie-dconf-dump"
+  changed_when: false
+
