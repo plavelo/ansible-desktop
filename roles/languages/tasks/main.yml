@@ -1,4 +1,11 @@
 ---
+- name: Install languages
+  become: true
+  apt:
+    name:
+      - julia
+    state: present
+
 - name: Check rust
   stat:
     path: "{{ home }}/.cargo/bin/rustup"
