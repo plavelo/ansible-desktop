@@ -7,6 +7,7 @@
       - tmux
       - curl
       - exfat-utils
+      - fcitx-mozc
     state: present
 
 - name: Install git
