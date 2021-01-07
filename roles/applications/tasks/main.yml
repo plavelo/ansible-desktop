@@ -28,6 +28,7 @@
   snap:
     name:
       - shotcut
+      - flutter
     classic: yes
 
 - name: Install apps (snap)
