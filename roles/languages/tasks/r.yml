@@ -1,0 +1,21 @@
+---
+- name: Add key
+  become: true
+  apt_key:
+    id: E298A3A825C0D65DFD57CBB651716619E084DAB9
+    keyserver: keyserver.ubuntu.com
+    state: present
+
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/
+    filename: r
+    state: present
+
+- name: Install R
+  become: true
+  apt:
+    name: r-base
+    state: present
+

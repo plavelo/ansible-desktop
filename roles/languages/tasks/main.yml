@@ -25,3 +25,6 @@
   include: haskell.yml
   when: haskell.failed
 
+- name: Install R
+  include: r.yml
+
