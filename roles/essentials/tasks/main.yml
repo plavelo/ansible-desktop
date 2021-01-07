@@ -6,6 +6,7 @@
       - vim
       - tmux
       - curl
+      - exfat-utils
     state: present
 
 - name: Install git
