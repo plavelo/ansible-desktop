@@ -7,7 +7,7 @@
 
 - name: Add the user to group audio
   user:
-    name: {{ name }}
+    name: "{{ name }}"
     group: audio
     append: yes
 
