@@ -1,0 +1,10 @@
+---
+- name: Check settings
+  stat:
+    path: "/lib/firmware/brcm/brcmfmac4356-pcie.txt"
+  register: umpc
+
+- name: Inject settings
+  include: umpc.yml
+  when: not umpc.stat.exists
+

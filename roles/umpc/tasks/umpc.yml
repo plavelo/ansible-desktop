@@ -1,0 +1,20 @@
+---
+- name: Create temporary directory
+  tempfile:
+    state: directory
+    suffix: umpc
+  register: umpc_tmp
+
+- name: Download script
+  git:
+    repo: https://github.com/wimpysworld/umpc-ubuntu.git
+    dest: "{{ umpc_tmp.path }}"
+
+- name: Run script
+  command: "sudo {{ rust_tmp.path }}/umpc-ubuntu.sh enable"
+
+- name: Cleanup temporary directory
+  file:
+    path: "{{ umpc_tmp }}"
+    state: absent
+
