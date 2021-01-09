@@ -2,7 +2,8 @@
 - hosts: localhost
   connection: local
   roles:
-    - budgie
     - essentials
     - applications
     - languages
+    - budgie
+
