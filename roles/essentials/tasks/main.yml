@@ -29,3 +29,6 @@
 - name: Install git
   include: git.yml
 
+- name: Setup audio
+  include: audio.yml
+
