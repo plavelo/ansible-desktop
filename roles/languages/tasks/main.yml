@@ -3,6 +3,7 @@
   become: true
   apt:
     name:
+      - lldb
       - julia
     state: present
 
