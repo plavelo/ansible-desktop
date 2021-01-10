@@ -26,6 +26,12 @@
   command: im-config -n fcitx
   changed_when: false
 
+- name: Configure tmux
+  become: true
+  copy:
+    src: "{{ playbook_dir }}/files/tmux.conf"
+    dest: "/etc/tmux.conf"
+
 - name: Install git
   include: git.yml
 
