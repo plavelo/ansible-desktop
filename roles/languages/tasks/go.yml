@@ -1,0 +1,13 @@
+---
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: ppa:longsleep/golang-backports
+    state: present
+
+- name: Install golang
+  become: true
+  apt:
+    name: golang-go
+    state: present
+

@@ -28,3 +28,6 @@
 - name: Install R
   include: r.yml
 
+- name: Install Go
+  include: go.yml
+
