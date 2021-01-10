@@ -1,17 +1,15 @@
 ---
 - name: Setup audio
+  become: true
   apt:
     name:
       - qjackctl
       - pulseaudio-module-jack
 
 - name: Add the user to group audio
+  become: true
   user:
     name: "{{ name }}"
     group: audio
     append: yes
-
-- name: Set default sink
-  command: pactl set-default-sink jack_out
-  changed_when: false
 

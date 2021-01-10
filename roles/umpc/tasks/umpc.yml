@@ -11,7 +11,11 @@
     dest: "{{ umpc_tmp.path }}"
 
 - name: Run script
-  command: "sudo {{ rust_tmp.path }}/umpc-ubuntu.sh enable"
+  become: true
+  shell: "./umpc-ubuntu.sh enable"
+  changed_when: false
+  args:
+    chdir: "{{ umpc_tmp.path }}"
 
 - name: Cleanup temporary directory
   file:

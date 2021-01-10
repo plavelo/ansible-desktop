@@ -1,10 +1,20 @@
 ---
 - name: Check settings
   stat:
-    path: "/lib/firmware/brcm/brcmfmac4356-pcie.txt"
+    path: "/usr/share/X11/xorg.conf.d/40-gpd-pocket2-monitor.conf"
   register: umpc
 
 - name: Inject settings
   include: umpc.yml
   when: not umpc.stat.exists
+
+- name: Configure the greeter
+  become: true
+  copy:
+    src: "{{ playbook_dir }}/files/slick-greeter.conf"
+    dest: "/etc/lightdm/slick-greeter.conf"
+
+- name: Set window-scaling-factor
+  shell: "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{'Gdk/WindowScalingFactor': <2>}\""
+  changed_when: false
 
