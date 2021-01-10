@@ -8,6 +8,11 @@
   include: umpc.yml
   when: not umpc.stat.exists
 
+- name: Disable touch screen configration
+  file:
+    path: "/etc/udev/rules.d/99-gpd-pocket2-touch.rules"
+    state: absent
+
 - name: Configure the greeter
   become: true
   copy:
@@ -17,4 +22,9 @@
 - name: Set window-scaling-factor
   shell: "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{'Gdk/WindowScalingFactor': <2>}\""
   changed_when: false
+
+- name: Rotate display
+  copy:
+    src: "{{ playbook_dir }}/files/monitors.xml"
+    dest: "~/.config/monitors.xml"
 
