@@ -29,7 +29,7 @@
     name:
       - shotcut
       - flutter
-      - intellij-idea-comminity
+      - intellij-idea-community
     classic: yes
 
 - name: Install apps (snap)
