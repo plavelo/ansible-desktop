@@ -44,3 +44,6 @@
   shell: "dconf load /com/solus-project/ < {{ playbook_dir }}/files/budgie-dconf-dump"
   changed_when: false
 
+- name: Setup backports
+  include: backports.yml
+

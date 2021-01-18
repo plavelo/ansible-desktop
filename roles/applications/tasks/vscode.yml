@@ -9,7 +9,6 @@
   become: true
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
-    state: present
     filename: vscode
     state: present
 
