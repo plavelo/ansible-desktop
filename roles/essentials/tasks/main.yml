@@ -17,7 +17,6 @@
       - curl
       - exfat-utils
       - fcitx-mozc
-      - fcitx-skk
       - language-pack-gnome-ja
       - fonts-noto-cjk-extra
     state: present
