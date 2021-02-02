@@ -1,4 +1,11 @@
 ---
+- name: Install GHC
+  become: true
+  apt:
+    name:
+      - ghc
+    state: present
+
 - name: Create temporary directory
   tempfile:
     state: directory
