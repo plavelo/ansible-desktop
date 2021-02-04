@@ -1,0 +1,20 @@
+---
+- name: Add key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    filename: docker
+    state: present
+
+- name: Install docker
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+
