@@ -1,13 +1,4 @@
 ---
-- name: Remove tools
-  become: true
-  apt:
-    name:
-      - ibus
-    state: absent
-    purge: true
-    autoremove: true
-
 - name: Install common tools
   become: true
   apt:
@@ -15,15 +6,8 @@
       - vim
       - tmux
       - curl
-      - exfat-utils
-      - fcitx-mozc
-      - language-pack-gnome-ja
-      - fonts-noto-cjk-extra
+      - ibus-mozc
     state: present
-
-- name: Configure IME
-  command: im-config -n fcitx
-  changed_when: false
 
 - name: Configure tmux
   become: true
@@ -33,9 +17,6 @@
 
 - name: Install git
   include: git.yml
-
-- name: Setup audio
-  include: audio.yml
 
 - name: Setup docker
   include: docker.yml
