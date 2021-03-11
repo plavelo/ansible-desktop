@@ -1,0 +1,10 @@
+---
+- name: Install themes
+  become: true
+  apt:
+    name:
+      - ubuntu-budgie-themes
+      - budgie-wallpapers
+      - gnome-tweak-tool
+    state: present
+

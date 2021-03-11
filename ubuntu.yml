@@ -3,6 +3,7 @@
   connection: local
   roles:
     - essentials
+    - appearances
     - applications
     - languages
 

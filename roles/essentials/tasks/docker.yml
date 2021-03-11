@@ -1,11 +1,4 @@
 ---
-- name: Ensure docker users are added to the docker group
-  become: true
-  user:
-    name: plavelo
-    groups: docker
-    append: true
-
 - name: Add key
   become: true
   apt_key:
@@ -24,4 +17,11 @@
   apt:
     name: docker-ce
     state: present
+
+- name: Ensure docker users are added to the docker group
+  become: true
+  user:
+    name: plavelo
+    groups: docker
+    append: true
 

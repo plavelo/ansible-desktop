@@ -30,6 +30,7 @@
       - shotcut
       - flutter
       - intellij-idea-community
+      - android-studio
     classic: yes
 
 - name: Install apps (snap)
