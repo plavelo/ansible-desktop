@@ -1,4 +1,3 @@
----
 - name: Install apps
   become: true
   apt:
@@ -48,25 +47,11 @@
 - name: Install vscode
   include: vscode.yml
 
-- name: Check slack
-  command: which slack
-  register: slack
-  changed_when: false
-  ignore_errors: true
-
 - name: Install slack
   include: slack.yml
-  when: slack.failed
-
-- name: Check discord
-  command: which discord
-  register: discord
-  changed_when: false
-  ignore_errors: true
 
 - name: Install discord
   include: discord.yml
-  when: discord.failed
 
 - name: Install ulauncher
   include: ulauncher.yml

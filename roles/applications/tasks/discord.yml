@@ -1,21 +1,30 @@
----
+- name: Check discord
+  command: which discord
+  register: discord
+  changed_when: false
+  ignore_errors: true
+
 - name: Create temporary directory
+  when: discord.failed
   tempfile:
     state: directory
     suffix: discord
   register: discord_tmp
 
 - name: Download deb
+  when: discord.failed
   get_url:
     dest: "{{ discord_tmp.path }}/discord.deb"
     url: https://discord.com/api/download?platform=linux&format=deb
 
 - name: Install deb
+  when: discord.failed
   become: true
   apt:
     deb: "{{ discord_tmp.path }}/discord.deb"
 
 - name: Cleanup temporary directory
+  when: discord.failed
   file:
     path: "{{ discord_tmp }}"
     state: absent

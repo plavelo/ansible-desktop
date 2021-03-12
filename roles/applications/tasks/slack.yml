@@ -1,21 +1,30 @@
----
+- name: Check slack
+  command: which slack
+  register: slack
+  changed_when: false
+  ignore_errors: true
+
 - name: Create temporary directory
+  when: slack.failed
   tempfile:
     state: directory
     suffix: slack
   register: slack_tmp
 
 - name: Download deb
+  when: slack.failed
   get_url:
     dest: "{{ slack_tmp.path }}/slack.deb"
     url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.11.3-amd64.deb
 
 - name: Install deb
+  when: slack.failed
   become: true
   apt:
     deb: "{{ slack_tmp.path }}/slack.deb"
 
 - name: Cleanup temporary directory
+  when: slack.failed
   file:
     path: "{{ slack_tmp }}"
     state: absent

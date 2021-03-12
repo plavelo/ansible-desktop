@@ -1,0 +1,48 @@
+- name: Check the toolchain
+  command: which riscv64-unknown-elf-gcc
+  register: riscv
+  changed_when: false
+  ignore_errors: true
+
+- name: Create a temporary directory
+  when: riscv.failed
+  tempfile:
+    state: directory
+    suffix: riscv 
+  register: riscv_tmp
+
+- name: Download the toolchain
+  when: riscv.failed
+  get_url:
+    dest: "{{ riscv_tmp.path }}/toolchain.tar.gz"
+    url: https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.1.0-2019.01.0-x86_64-linux-ubuntu14.tar.gz
+
+- name: Create a directory if it does not exist
+  when: riscv.failed
+  become: true
+  ansible.builtin.file:
+    path: /opt/riscv
+    state: directory
+    mode: '0755'
+
+- name: Extract the toolchain
+  when: riscv.failed
+  become: true
+  ansible.builtin.unarchive:
+    src: "{{ riscv_tmp.path }}/toolchain.tar.gz"
+    dest: /opt/riscv/
+    extra_opts: [--strip-components=1]
+
+- name: Cleanup the temporary directory
+  when: riscv.failed
+  file:
+    path: "{{ riscv_tmp }}"
+    state: absent
+
+- name: Add to PATH
+  when: riscv.failed
+  ansible.builtin.lineinfile:
+    path: ~/.bashrc
+    line: export PATH=/opt/riscv/bin:$PATH
+    create: yes
+

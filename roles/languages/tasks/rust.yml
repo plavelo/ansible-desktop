@@ -1,20 +1,38 @@
----
+- name: Check rust
+  stat:
+    path: "{{ home }}/.cargo/bin/rustup"
+  register: rust
+
 - name: Create temporary directory
+  when: not rust.stat.exists
   tempfile:
     state: directory
     suffix: rust
   register: rust_tmp
 
 - name: Download script
+  when: not rust.stat.exists
   get_url:
     dest: "{{ rust_tmp.path }}/init.sh"
     url: https://sh.rustup.rs/
 
 - name: Run script
+  when: not rust.stat.exists
   command: "sh {{ rust_tmp.path }}/init.sh -y"
 
 - name: Cleanup temporary directory
+  when: not rust.stat.exists
   file:
     path: "{{ rust_tmp }}"
     state: absent
+
+- name: Check cargo-make
+  command: which cargo-make
+  register: cargo_make
+  changed_when: false
+  ignore_errors: true
+
+- name: Install cargo-make
+  when: cargo_make.failed
+  command: "cargo install cargo-make"
 

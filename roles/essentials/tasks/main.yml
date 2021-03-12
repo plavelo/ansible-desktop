@@ -1,4 +1,3 @@
----
 - name: Install common tools
   become: true
   apt:
@@ -6,6 +5,8 @@
       - vim
       - tmux
       - curl
+      - cmake
+      - libssl-dev
       - ibus-mozc
       - language-pack-gnome-ja
       - fonts-noto-cjk-extra

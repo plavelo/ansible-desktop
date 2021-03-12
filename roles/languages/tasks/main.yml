@@ -1,4 +1,3 @@
----
 - name: Install languages
   become: true
   apt:
@@ -7,28 +6,18 @@
       - julia
     state: present
 
-- name: Check rust
-  stat:
-    path: "{{ home }}/.cargo/bin/rustup"
-  register: rust
-
 - name: Install rust
   include: rust.yml
-  when: not rust.stat.exists
-
-- name: Check haskell
-  command: which stack
-  register: haskell
-  changed_when: false
-  ignore_errors: true
 
 - name: Install haskell
   include: haskell.yml
-  when: haskell.failed
 
 - name: Install R
   include: r.yml
 
 - name: Install Go
   include: go.yml
+
+- name: Install RISC-V toolchain
+  include: riscv.yml
 
