@@ -4,6 +4,7 @@
     name:
       - lldb
       - julia
+      - default-jre
     state: present
 
 - name: Install rust
