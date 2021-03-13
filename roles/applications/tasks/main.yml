@@ -12,6 +12,7 @@
       - evince
       - asunder
       - ardour
+      - gnome-boxes
     state: present
 
 - name: Remove apps
