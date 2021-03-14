@@ -1,0 +1,6 @@
+- name: Install X11 packages
+  include: x11.yml
+
+- name: Install GTK packages
+  include: gtk.yml
+

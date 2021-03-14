@@ -1,0 +1,7 @@
+- name: Install GTK packages
+  become: true
+  apt:
+    name:
+      - libgtk-3-dev 
+    state: present
+
