@@ -10,3 +10,15 @@
     name: golang-go
     state: present
 
+- name: Export GOPATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: export GOPATH=$HOME/go
+    create: yes
+
+- name: Add to PATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: export PATH=$GOPATH/bin:$PATH
+    create: yes
+

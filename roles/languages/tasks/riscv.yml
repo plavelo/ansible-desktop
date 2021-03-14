@@ -40,9 +40,8 @@
     state: absent
 
 - name: Add to PATH
-  when: riscv.failed
   ansible.builtin.lineinfile:
-    path: ~/.bashrc
+    path: ~/.profile
     line: export PATH=/opt/riscv/bin:$PATH
     create: yes
 
