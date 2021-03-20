@@ -21,6 +21,7 @@
   snap:
     name:
       - shotcut
+      - blender
       - flutter
       - intellij-idea-community
       - android-studio
