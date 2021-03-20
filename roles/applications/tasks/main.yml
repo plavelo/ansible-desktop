@@ -13,15 +13,8 @@
       - asunder
       - ardour
       - gnome-boxes
+      - firefox
     state: present
-
-- name: Remove apps
-  become: true
-  apt:
-    name:
-      - firefox*
-    state: absent
-    purge: true
 
 - name: Install apps (snap, classic)
   become: true
