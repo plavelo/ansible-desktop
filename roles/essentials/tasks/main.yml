@@ -8,7 +8,6 @@
       - cmake
       - libssl-dev
       - ibus-mozc
-      - fcitx-mozc
       - language-pack-gnome-ja
       - fonts-noto-cjk-extra
       - gnome-getting-started-docs-ja
