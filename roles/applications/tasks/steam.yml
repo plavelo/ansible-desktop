@@ -1,0 +1,12 @@
+- name: Export PRESSURE_VESSEL_SHARE_HOME
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: export PRESSURE_VESSEL_SHARE_HOME=0
+    create: yes
+
+- name: Install steam
+  become: true
+  apt:
+    name: steam
+    state: present
+

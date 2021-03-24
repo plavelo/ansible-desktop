@@ -14,7 +14,6 @@
       - ardour
       - gnome-boxes
       - firefox
-      - steam
     state: present
 
 - name: Install apps (snap, classic)
@@ -51,4 +50,7 @@
 
 - name: Install ulauncher
   include: ulauncher.yml
+
+- name: Install steam
+  include: steam.yml
 
