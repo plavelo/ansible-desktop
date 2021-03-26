@@ -1,3 +1,58 @@
+- name: Add key
+  become: true
+  apt_key:
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    state: present
+
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: deb https://dl.winehq.org/wine-builds/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main
+    state: present
+
+- name: Install winehq
+  become: true
+  apt:
+    name: winehq-staging
+    install_recommends: yes
+    state: present
+
+- name: Setup Proton Glorious Eggroll (GE) edition
+  block:
+    - name: Check proton
+      stat:
+        path: "{{ home }}/.steam/root/compatibilitytools.d/Proton-{{ item }}"
+      register: proton
+
+    - name: Create compatibility tools directory
+      when: not proton.stat.exists
+      file:
+        path: "{{ home }}/.steam/root/compatibilitytools.d/"
+        state: directory
+
+    - name: Download Proton GE
+      when: not proton.stat.exists
+      get_url:
+        url: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/{{ item }}/Proton-{{ item }}.tar.gz"
+        dest: "{{ home }}/.steam/root/compatibilitytools.d/"
+        force: no
+
+    - name: Extract Proton GE
+      when: not proton.stat.exists
+      unarchive:
+        src: "~/.steam/root/compatibilitytools.d/Proton-{{ item }}.tar.gz"
+        dest: "~/.steam/root/compatibilitytools.d/"
+        remote_src: true
+
+    - name: Cleanup the archive
+      when: not proton.stat.exists
+      file:
+        path: "~/.steam/root/compatibilitytools.d/Proton-{{ item }}.tar.gz"
+        state: absent
+
+  vars:
+    item: 6.4-GE-1
+
 - name: Export PRESSURE_VESSEL_SHARE_HOME
   ansible.builtin.lineinfile:
     path: ~/.profile
@@ -7,6 +62,9 @@
 - name: Install steam
   become: true
   apt:
-    name: steam
+    name:
+      - steam
+      - libvulkan1
+      - winetricks
     state: present
 
