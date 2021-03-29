@@ -1,3 +1,11 @@
+- name: Install dev tools
+  become: true
+  apt:
+    name:
+      - cmake
+      - libssl-dev
+    state: present
+
 - name: Install X11 packages
   include: x11.yml
 
