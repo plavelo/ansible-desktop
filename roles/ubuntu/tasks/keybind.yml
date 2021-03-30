@@ -9,20 +9,20 @@
   set_fact:
     keybindings:
       - name: move-to-workspace-down
-        value: "'<Primary><Alt>Down'"
+        value: "['<Primary><Alt>Down']"
       - name: move-to-workspace-up
-        value: "'<Primary><Alt>Up'"
+        value: "['<Primary><Alt>Up']"
       - name: switch-input-source
-        value: "'<Primary>space'"
+        value: "['<Primary>space']"
       - name: switch-input-source-backward
-        value: "'<Primary><Shift>space'"
+        value: "['<Primary><Shift>space']"
       - name: switch-to-workspace-down
-        value: "'<Primary>Down'"
+        value: "['<Primary>Down']"
       - name: switch-to-workspace-up
-        value: "'<Primary>Up'"
+        value: "['<Primary>Up']"
 
 - name: Keybindings
   dconf:
     key: /org/gnome/desktop/wm/keybindings/{{ item.name }}
-    value: "{{ item.value }}"
+    value: "\"{{ item.value }}\""
   loop: "{{ keybindings }}"

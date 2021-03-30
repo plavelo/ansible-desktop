@@ -1,0 +1,5 @@
+- name: Setup keybindings
+  include: keybind.yml
+
+- name: Setup favorite apps
+  include: favorite_apps.yml

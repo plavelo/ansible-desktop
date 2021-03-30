@@ -24,5 +24,3 @@
 - name: Setup docker
   include: docker.yml
 
-- name: Setup keybindings
-  include: keybind.yml

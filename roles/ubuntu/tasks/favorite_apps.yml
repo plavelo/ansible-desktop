@@ -1,0 +1,4 @@
+- name: Favorite apps
+  dconf:
+    key: /org/gnome/shell/favorite-apps
+    value: "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'firefox.desktop', 'discord.desktop', 'slack.desktop', 'code.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.Evince.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Terminal.desktop', 'android-studio_android-studio.desktop', 'jetbrains-studio.desktop']"
