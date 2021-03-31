@@ -26,3 +26,8 @@
     key: /org/gnome/desktop/wm/keybindings/{{ item.name }}
     value: "{{ item.value }}"
   loop: "{{ keybindings }}"
+
+- name: Change caps behavior
+  dconf:
+    key: /org/gnome/desktop/input-sources/xkb-options
+    value: "['ctrl:nocaps']"
