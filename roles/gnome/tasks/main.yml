@@ -3,3 +3,6 @@
 
 - name: Setup favorite apps
   include: favorite_apps.yml
+
+- name: Setup display scaling
+  include: scaling.yml
