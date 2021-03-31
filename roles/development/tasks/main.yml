@@ -4,6 +4,7 @@
     name:
       - cmake
       - libssl-dev
+      - build-essential
     state: present
 
 - name: Install X11 packages
