@@ -5,6 +5,7 @@
       - cmake
       - libssl-dev
       - build-essential
+      - ccache
     state: present
 
 - name: Install X11 packages
