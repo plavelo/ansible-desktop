@@ -6,6 +6,7 @@
       - libssl-dev
       - build-essential
       - ccache
+      - openjdk-8-jdk
     state: present
 
 - name: Install X11 packages
