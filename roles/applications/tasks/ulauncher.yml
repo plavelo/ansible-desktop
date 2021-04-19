@@ -6,6 +6,8 @@
 - name: Install ulauncher
   become: true
   apt:
-    name: ulauncher
+    name:
+      - wmctrl
+      - ulauncher
     state: present
 
