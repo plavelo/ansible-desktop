@@ -27,12 +27,11 @@
     state: absent
 
 - name: Check cargo-make
-  command: which cargo-make
+  stat:
+    path: "{{ home }}/.cargo/bin/cargo-make"
   register: cargo_make
-  changed_when: false
-  ignore_errors: true
 
 - name: Install cargo-make
-  when: cargo_make.failed
-  command: "cargo install cargo-make"
+  when: not cargo_make.stat.exists
+  command: "{{ home }}/.cargo/bin/cargo install cargo-make"
 
