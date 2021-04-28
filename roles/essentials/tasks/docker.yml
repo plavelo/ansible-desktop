@@ -14,7 +14,9 @@
 - name: Install docker
   become: true
   apt:
-    name: docker-ce
+    name:
+      - docker-ce
+      - docker-compose
     state: present
 
 - name: Ensure docker users are added to the docker group
