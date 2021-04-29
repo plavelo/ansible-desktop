@@ -1,3 +1,10 @@
+- name: Install tweak tool
+  become: true
+  apt:
+    name:
+      - gnome-tweak-tool
+    state: present
+
 - name: Setup keybindings
   include: keybind.yml
 

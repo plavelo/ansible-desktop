@@ -1,4 +1,12 @@
-- name: GTK theme
+- name: Install themes
+  become: true
+  apt:
+    name:
+      - ubuntu-budgie-themes
+      - budgie-wallpapers
+    state: present
+
+- name: Setup theme
   dconf:
     key: /org/gnome/desktop/interface/gtk-theme
     value: "'Pocillo'"
