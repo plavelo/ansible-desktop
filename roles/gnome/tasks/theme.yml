@@ -2,3 +2,9 @@
   dconf:
     key: /org/gnome/desktop/interface/gtk-theme
     value: "'Pocillo'"
+
+- name: Battery percentage
+  dconf:
+    key: /org/gnome/desktop/interface/show-battery-percentage
+    value: 'true'
+
