@@ -1,0 +1,4 @@
+- name: Natural scrolling
+  dconf:
+    key: /org/gnome/desktop/peripherals/mouse/natural-scroll
+    value: 'true'

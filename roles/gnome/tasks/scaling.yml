@@ -1,4 +1,4 @@
 - name: Text scaling
   dconf:
     key: /org/gnome/desktop/interface/text-scaling-factor
-    value: 1.5
+    value: '1.5'

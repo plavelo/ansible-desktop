@@ -6,3 +6,10 @@
 
 - name: Setup display scaling
   include: scaling.yml
+
+- name: Setup mice
+  include: mouse.yml
+
+- name: Setup theme
+  include: theme.yml
+
