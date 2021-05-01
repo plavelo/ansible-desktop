@@ -54,3 +54,6 @@
 - name: Install steam
   include: steam.yml
 
+- name: Install zoom
+  include: zoom.yml
+

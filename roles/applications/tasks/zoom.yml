@@ -1,0 +1,31 @@
+- name: Check zoom
+  command: which zoom
+  register: zoom
+  changed_when: false
+  ignore_errors: true
+
+- name: Create temporary directory
+  when: zoom.failed
+  tempfile:
+    state: directory
+    suffix: zoom
+  register: zoom_tmp
+
+- name: Download deb
+  when: zoom.failed
+  get_url:
+    dest: "{{ zoom_tmp.path }}/zoom.deb"
+    url: http://zoom.us/client/latest/zoom_amd64.deb
+
+- name: Install deb
+  when: zoom.failed
+  become: true
+  apt:
+    deb: "{{ zoom_tmp.path }}/zoom.deb"
+
+- name: Cleanup temporary directory
+  when: zoom.failed
+  file:
+    path: "{{ zoom_tmp }}"
+    state: absent
+
