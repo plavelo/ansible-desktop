@@ -13,6 +13,7 @@
       - ardour
       - gnome-boxes
       - firefox
+      - timeshift
     state: present
 
 - name: Install apps (snap, classic)
