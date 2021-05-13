@@ -13,6 +13,15 @@
       - bridge-utils
     state: present
 
+- name: Install dev tools (snap, classic)
+  become: true
+  snap:
+    name:
+      - flutter
+      - intellij-idea-community
+      - android-studio
+    classic: yes
+
 - name: Install git
   include: git.yml
 

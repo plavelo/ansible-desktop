@@ -22,10 +22,6 @@
     name:
       - shotcut
       - blender
-      - flutter
-      - intellij-idea-community
-      - android-studio
-      - android-studio-canary
     classic: yes
 
 - name: Install apps (snap)
