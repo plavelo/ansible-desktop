@@ -54,3 +54,6 @@
 - name: Install zoom
   include: zoom.yml
 
+- name: Install unity3d
+  include: unity3d.yml
+

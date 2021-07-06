@@ -1,0 +1,34 @@
+- name: Check unity3d
+  command: which UnityHub
+  register: unity3d
+  changed_when: false
+  ignore_errors: true
+
+- name: Create a directory if it does not exist
+  when: unity3d.failed
+  become: true
+  ansible.builtin.file:
+    path: /opt/unity3d
+    state: directory
+    mode: '0755'
+
+- name: Download UnityHub
+  when: unity3d.failed
+  become: true
+  get_url:
+    dest: /opt/unity3d/UnityHub
+    url: https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage
+
+- name: Change permission
+  when: unity3d.failed
+  become: true
+  ansible.builtin.file:
+    path: /opt/unity3d/UnityHub
+    mode: a+x
+
+- name: Add to PATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: export PATH=/opt/unity3d:$PATH
+    create: yes
+
