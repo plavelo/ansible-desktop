@@ -14,13 +14,13 @@
       - gnome-boxes
       - firefox
       - timeshift
+      - shotcut
     state: present
 
 - name: Install apps (snap, classic)
   become: true
   snap:
     name:
-      - shotcut
       - blender
     classic: yes
 
