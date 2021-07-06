@@ -19,6 +19,9 @@
 - name: Install Go
   include: go.yml
 
+- name: Intall Python
+  include: python.yml
+
 - name: Install RISC-V toolchain
   include: riscv.yml
 

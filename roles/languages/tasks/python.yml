@@ -1,0 +1,11 @@
+- name: Install pip3
+  become: true
+  apt:
+    name:
+      - python3-pip
+    state: present
+
+- name: Install python packages
+  pip:
+    name: mlagents
+    executable: pip3
