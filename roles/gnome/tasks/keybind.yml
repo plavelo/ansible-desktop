@@ -12,10 +12,6 @@
         value: "['<Primary><Alt>Down']"
       - name: move-to-workspace-up
         value: "['<Primary><Alt>Up']"
-      - name: switch-input-source
-        value: "['<Primary>space']"
-      - name: switch-input-source-backward
-        value: "['<Primary><Shift>space']"
       - name: switch-to-workspace-down
         value: "['<Primary>Down']"
       - name: switch-to-workspace-up

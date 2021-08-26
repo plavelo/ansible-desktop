@@ -5,7 +5,7 @@
       - vim
       - tmux
       - curl
-      - ibus-mozc
+      - fcitx5-mozc
       - language-pack-gnome-ja
       - fonts-noto-cjk-extra
       - gnome-getting-started-docs-ja
