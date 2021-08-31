@@ -57,3 +57,6 @@
 - name: Install unity3d
   include: unity3d.yml
 
+- name: Install flowblade
+  include: flowblade.yml
+
