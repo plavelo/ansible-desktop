@@ -11,6 +11,7 @@
       - libvirt-daemon-system
       - libvirt-clients
       - bridge-utils
+      - libncurses5
     state: present
 
 - name: Install dev tools (snap, classic)
