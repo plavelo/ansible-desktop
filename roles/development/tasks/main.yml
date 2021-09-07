@@ -21,6 +21,7 @@
       - flutter
       - intellij-idea-community
       - android-studio
+      - node
     classic: yes
 
 - name: Install git
@@ -34,4 +35,7 @@
 
 - name: Install GTK packages
   include: gtk.yml
+
+- name: Install AtCoder tools
+  include: atcoder.yml
 

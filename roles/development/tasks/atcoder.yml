@@ -1,0 +1,14 @@
+- name: Install online-judge-tools
+  pip:
+    name: online-judge-tools
+
+- name: Install atcoder-tools
+  pip:
+    name: atcoder-tools
+
+- name: Install atcoder-cli
+  become: true
+  community.general.npm:
+    name: atcoder-cli
+    global: yes
+
