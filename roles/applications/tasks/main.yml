@@ -15,6 +15,7 @@
       - firefox
       - timeshift
       - shotcut
+      - gimp
     state: present
 
 - name: Install apps (snap, classic)
@@ -28,7 +29,6 @@
   become: true
   snap:
     name:
-      - gimp
       - qalculate
       - spotify
       - vlc
