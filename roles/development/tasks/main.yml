@@ -12,6 +12,7 @@
       - libvirt-clients
       - bridge-utils
       - libncurses5
+      - libboost-dev
     state: present
 
 - name: Install dev tools (snap, classic)
