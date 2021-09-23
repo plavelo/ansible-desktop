@@ -1,0 +1,30 @@
+- name: Check jupyterlab
+  stat:
+    path: "/opt/JupyterLab/jupyterlab_app"
+  register: jupyterlab
+
+- name: Create temporary directory
+  when: jupyterlab.failed
+  tempfile:
+    state: directory
+    suffix: jupyterlab
+  register: jupyterlab_tmp
+
+- name: Download deb
+  when: jupyterlab.failed
+  get_url:
+    dest: "{{ jupyterlab_tmp.path }}/jupyterlab.deb"
+    url: https://github.com/jupyterlab/jupyterlab_app/releases/latest/download/JupyterLab-Setup-Debian.deb
+
+- name: Install deb
+  when: jupyterlab.failed
+  become: true
+  apt:
+    deb: "{{ jupyterlab_tmp.path }}/jupyterlab.deb"
+
+- name: Cleanup temporary directory
+  when: jupyterlab.failed
+  file:
+    path: "{{ jupyterlab_tmp }}"
+    state: absent
+

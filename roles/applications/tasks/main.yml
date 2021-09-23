@@ -60,3 +60,6 @@
 - name: Install flowblade
   include: flowblade.yml
 
+- name: Install jupyterlab app
+  include: jupyterlab.yml
+
