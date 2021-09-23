@@ -36,3 +36,23 @@
     path: "{{ minikube_tmp }}"
     state: absent
 
+- name: Check kind
+  command: which kind
+  register: kind
+  changed_when: false
+  ignore_errors: true
+
+- name: Download kind
+  when: kind.failed
+  become: true
+  get_url:
+    dest: /usr/local/bin/kind
+    url: https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
+
+- name: Change permission
+  when: kind.failed
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/bin/kind
+    mode: a+x
+
