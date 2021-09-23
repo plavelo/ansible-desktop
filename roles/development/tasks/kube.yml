@@ -1,0 +1,31 @@
+- name: Check minikube
+  command: which minikube
+  register: minikube
+  changed_when: false
+  ignore_errors: true
+
+- name: Create temporary directory
+  when: minikube.failed
+  tempfile:
+    state: directory
+    suffix: minikube 
+  register: minikube_tmp
+
+- name: Download deb
+  when: minikube.failed
+  get_url:
+    dest: "{{ minikube_tmp.path }}/minikube.deb"
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+
+- name: Install deb
+  when: minikube.failed
+  become: true
+  apt:
+    deb: "{{ minikube_tmp.path }}/minikube.deb"
+
+- name: Cleanup temporary directory
+  when: minikube.failed
+  file:
+    path: "{{ minikube_tmp }}"
+    state: absent
+
