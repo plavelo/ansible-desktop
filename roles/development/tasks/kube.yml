@@ -1,3 +1,10 @@
+- name: Install kubectl
+  become: true
+  snap:
+    name:
+      - kubectl
+    classic: yes
+
 - name: Check minikube
   command: which minikube
   register: minikube
