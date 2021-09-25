@@ -40,6 +40,6 @@
 - name: Install AtCoder tools
   include: atcoder.yml
 
-- name: Install minikube
-  include: kube.yml
+- name: Install Google Cloud Platform tools
+  include: gcp.yml
 

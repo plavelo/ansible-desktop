@@ -1,3 +1,10 @@
+- name: Install cloud-sdk
+  become: true
+  snap:
+    name:
+      - google-cloud-sdk
+    classic: yes
+
 - name: Install kubectl
   become: true
   snap:
@@ -54,5 +61,25 @@
   become: true
   ansible.builtin.file:
     path: /usr/local/bin/kind
+    mode: a+x
+
+- name: Check skaffold
+  command: which skaffold
+  register: skaffold
+  changed_when: false
+  ignore_errors: true
+
+- name: Download skaffold
+  when: skaffold.failed
+  become: true
+  get_url:
+    dest: /usr/local/bin/skaffold
+    url: https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+
+- name: Change permission
+  when: skaffold.failed
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/bin/skaffold
     mode: a+x
 
