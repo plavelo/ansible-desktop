@@ -16,6 +16,7 @@
       - timeshift
       - shotcut
       - gimp
+      - krita
     state: present
 
 - name: Install apps (snap, classic)
