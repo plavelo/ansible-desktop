@@ -23,6 +23,7 @@
   snap:
     name:
       - blender
+      - gitkraken
     classic: yes
 
 - name: Install apps (snap)
