@@ -35,3 +35,12 @@
   when: not cargo_make.stat.exists
   command: "{{ home }}/.cargo/bin/cargo install cargo-make"
 
+- name: Check cargo-expand
+  stat:
+    path: "{{ home }}/.cargo/bin/cargo-expand"
+  register: cargo_expand
+
+- name: Install cargo-expand
+  when: not cargo_expand.stat.exists
+  command: "{{ home }}/.cargo/bin/cargo install cargo-expand"
+
