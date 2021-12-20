@@ -17,6 +17,7 @@
       - shotcut
       - gimp
       - krita
+      - obs-studio
     state: present
 
 - name: Install apps (snap, classic)
