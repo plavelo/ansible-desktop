@@ -18,6 +18,8 @@
       - gimp
       - krita
       - obs-studio
+      - jpegoptim
+      - imagemagick
     state: present
 
 - name: Install apps (snap, classic)
