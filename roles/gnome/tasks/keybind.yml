@@ -16,6 +16,14 @@
         value: "['<Primary>Down']"
       - name: switch-to-workspace-up
         value: "['<Primary>Up']"
+      - name: move-to-workspace-left
+        value: "['<Primary><Alt>Left']"
+      - name: move-to-workspace-right
+        value: "['<Primary><Alt>Right']"
+      - name: switch-to-workspace-left
+        value: "['<Primary>Left']"
+      - name: switch-to-workspace-right
+        value: "['<Primary>Right']"
 
 - name: Keybindings
   dconf:
