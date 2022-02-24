@@ -5,11 +5,6 @@
       - vim
       - tmux
       - curl
-      - fcitx5-mozc
-      - language-pack-gnome-ja
-      - fonts-noto-cjk-extra
-      - gnome-getting-started-docs-ja
-      - gnome-user-docs-ja
     state: present
 
 - name: Configure tmux

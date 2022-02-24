@@ -1,8 +1,13 @@
-- name: Install tweak tool
+- name: Install gnome tools
   become: true
   apt:
     name:
       - gnome-tweak-tool
+      - fcitx5-mozc
+      - language-pack-gnome-ja
+      - fonts-noto-cjk-extra
+      - gnome-getting-started-docs-ja
+      - gnome-user-docs-ja
     state: present
 
 - name: Setup keybindings
@@ -19,4 +24,10 @@
 
 - name: Setup theme
   include: theme.yml
+
+- name: Install X11 packages
+  include: x11.yml
+
+- name: Install GTK packages
+  include: gtk.yml
 
