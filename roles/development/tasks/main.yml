@@ -20,9 +20,6 @@
   snap:
     name:
       - flutter
-      - intellij-idea-community
-      - android-studio
-      - android-studio-canary
       - node
     classic: yes
 
