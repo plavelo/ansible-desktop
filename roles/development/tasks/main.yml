@@ -14,6 +14,7 @@
       - bridge-utils
       - libncurses5
       - libboost-dev
+      - libhidapi-dev
     state: present
 
 - name: Install dev tools (snap, classic)
