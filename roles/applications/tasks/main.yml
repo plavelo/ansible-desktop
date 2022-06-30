@@ -65,9 +65,6 @@
 - name: Install unity3d
   include: unity3d.yml
 
-- name: Install flowblade
-  include: flowblade.yml
-
 - name: Install jupyterlab app
   include: jupyterlab.yml
 
