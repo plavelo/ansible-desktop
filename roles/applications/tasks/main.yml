@@ -28,7 +28,6 @@
     name:
       - blender
       - gitkraken
-      - intellij-idea-community
       - android-studio
       - android-studio-canary
     classic: yes
