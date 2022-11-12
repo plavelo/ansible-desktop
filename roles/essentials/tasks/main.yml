@@ -5,6 +5,8 @@
       - vim
       - tmux
       - curl
+      - tlp
+      - acpi-call-dkms
     state: present
 
 - name: Configure tmux

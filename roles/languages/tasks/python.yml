@@ -5,11 +5,6 @@
       - python3-pip
     state: present
 
-- name: Install mlagents
-  pip:
-    name: mlagents
-    executable: pip3
-
 - name: Install pwn
   pip:
     name: pwn
